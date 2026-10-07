@@ -61,7 +61,7 @@ website_route_rules = [
 
 # Ticket P4-26: the Aurora look of Desk and the login page comes from the separate `aurora_ui` theme app, so it
 # must be installed first (its tokens are what public/css/web.css reads). aurora_ui is never edited from here.
-required_apps = ["erpnext", "aurora_ui"]
+required_apps = ["erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
 # Ticket P8.5-02's own "Back Office entries" in Desk — the same mechanism Frappe's own CRM and
