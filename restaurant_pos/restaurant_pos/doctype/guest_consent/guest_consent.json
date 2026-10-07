@@ -1,0 +1,122 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "hub_uuid",
+  "restaurant_order",
+  "phone",
+  "purpose",
+  "granted",
+  "text_version",
+  "consent_text",
+  "captured_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Outlet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "hub_uuid",
+   "fieldtype": "Data",
+   "label": "Hub UUID",
+   "unique": 1,
+   "read_only": 1,
+   "description": "Ticket P3-02's pattern: the Hub-generated idempotency key this record was synced with."
+  },
+  {
+   "fieldname": "restaurant_order",
+   "fieldtype": "Data",
+   "label": "Restaurant Order",
+   "description": "The Hub's own order UUID (orders are never mirrored into Frappe)."
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "The guest's OTP-verified mobile number (E.164). Personal data under the DPDP Act."
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "whatsapp_updates\nloyalty",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "granted",
+   "fieldtype": "Check",
+   "label": "Granted",
+   "in_list_view": 1,
+   "description": "1 = the guest agreed; 0 = they withdrew. Never edited: a change of mind is a NEW row, and the latest row for a phone and purpose is the current state.",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "text_version",
+   "fieldtype": "Data",
+   "label": "Wording Version",
+   "reqd": 1
+  },
+  {
+   "fieldname": "consent_text",
+   "fieldtype": "Small Text",
+   "label": "Wording Shown",
+   "reqd": 1,
+   "description": "The exact words the guest agreed to, as recorded by the Hub at the time."
+  },
+  {
+   "fieldname": "captured_at",
+   "fieldtype": "Datetime",
+   "label": "Captured At",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-10-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Guest Consent",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 0,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "search_fields": "phone,restaurant_order"
+}

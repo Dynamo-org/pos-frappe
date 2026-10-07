@@ -1,0 +1,141 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-26 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "restaurant_order",
+  "line_item_id",
+  "kind",
+  "amount",
+  "reason",
+  "requested_by",
+  "approved_by",
+  "device",
+  "occurred_at",
+  "correction_of",
+  "correction_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Outlet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "restaurant_order",
+   "fieldtype": "Data",
+   "label": "Restaurant Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "The Hub's own order UUID, not a Frappe Link — orders are created and live only on the Hub (CLAUDE.md rule 4) and are never individually mirrored into Frappe; only the final bill syncs up, as a Sales Invoice (ticket P3-07)."
+  },
+  {
+   "fieldname": "line_item_id",
+   "fieldtype": "Data",
+   "label": "Line Item Id"
+  },
+  {
+   "fieldname": "kind",
+   "fieldtype": "Select",
+   "label": "Kind",
+   "options": "Void\nComp\nDiscount",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Int",
+   "label": "Amount",
+   "description": "Paise."
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "Staff PIN",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Staff PIN",
+   "reqd": 1,
+   "description": "Supervisor who approved it — never the same session as requested_by."
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "label": "Device",
+   "options": "Device"
+  },
+  {
+   "fieldname": "occurred_at",
+   "fieldtype": "Datetime",
+   "label": "Occurred At",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "correction_of",
+   "fieldtype": "Link",
+   "label": "Correction Of",
+   "options": "Void Log",
+   "read_only": 1,
+   "description": "Ticket P3-29: this record never edits or deletes the original - it is a NEW entry that points back at it."
+  },
+  {
+   "fieldname": "correction_reason",
+   "fieldtype": "Small Text",
+   "label": "Correction Reason",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-09-26 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Void Log",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 0,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "search_fields": "restaurant_order,outlet"
+}

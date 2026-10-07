@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-26 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "device_type",
+  "credential_id",
+  "app_version",
+  "paired_at",
+  "last_seen_at",
+  "revoked_at"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Outlet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "device_type",
+   "fieldtype": "Select",
+   "label": "Device Type",
+   "options": "Waiter\nKitchen\nCashier\nSupervisor\nPrint Station",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "credential_id",
+   "fieldtype": "Data",
+   "label": "Credential Id",
+   "unique": 1,
+   "read_only": 1,
+   "description": "The device's secret credential. Visible only to the Hub's service account - never to Desk users, so no one can impersonate a paired device.",
+   "in_list_view": 0,
+   "permlevel": 2,
+   "no_copy": 1,
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "app_version",
+   "fieldtype": "Data",
+   "label": "App Version",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "paired_at",
+   "fieldtype": "Datetime",
+   "label": "Paired At",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "last_seen_at",
+   "fieldtype": "Datetime",
+   "label": "Last Seen At",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "revoked_at",
+   "fieldtype": "Datetime",
+   "label": "Revoked At",
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-09-26 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Device",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "Hub Service",
+   "permlevel": 0,
+   "read": 1
+  },
+  {
+   "role": "Hub Service",
+   "permlevel": 2,
+   "read": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "title_field": "device_type",
+ "search_fields": "outlet,device_type"
+}

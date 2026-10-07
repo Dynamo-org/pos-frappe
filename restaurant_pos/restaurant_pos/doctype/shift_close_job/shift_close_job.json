@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-10-04 22:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "status",
+  "hub_uuid",
+  "attempts",
+  "run_after",
+  "started_at",
+  "finished_at",
+  "last_error",
+  "payload_json",
+  "result_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Data",
+   "label": "Outlet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Queued\nRunning\nDone\nFailed",
+   "default": "Queued",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "hub_uuid",
+   "fieldtype": "Data",
+   "label": "Close Id",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1,
+   "description": "The Hub's id for this shift close: a retry of the same close finds the same job."
+  },
+  {
+   "fieldname": "attempts",
+   "fieldtype": "Int",
+   "label": "Attempts",
+   "default": "0",
+   "read_only": 1
+  },
+  {
+   "fieldname": "run_after",
+   "fieldtype": "Datetime",
+   "label": "Not Before",
+   "in_list_view": 1,
+   "read_only": 1,
+   "description": "Each outlet gets a stable offset inside the stagger window, so a chain closing at the same minute does not start together."
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "finished_at",
+   "fieldtype": "Datetime",
+   "label": "Finished At",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "payload_json",
+   "fieldtype": "Code",
+   "label": "What the Hub Sent",
+   "options": "JSON",
+   "read_only": 1
+  },
+  {
+   "fieldname": "result_json",
+   "fieldtype": "Code",
+   "label": "Result",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-10-04 22:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Shift Close Job",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "outlet",
+ "search_fields": "outlet,status"
+}

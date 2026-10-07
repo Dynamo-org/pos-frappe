@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "field:group_name",
+ "creation": "2026-10-03 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "group_name",
+  "is_required",
+  "allow_multiple",
+  "options"
+ ],
+ "fields": [
+  {
+   "fieldname": "group_name",
+   "fieldtype": "Data",
+   "label": "Group Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "e.g. Size, Spice level, Add-ons. Shared by every item that links to it."
+  },
+  {
+   "fieldname": "is_required",
+   "fieldtype": "Check",
+   "label": "Required",
+   "in_list_view": 1,
+   "description": "The waiter must choose before the item can be added to an order.",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "allow_multiple",
+   "fieldtype": "Check",
+   "label": "Allow Multiple Choices",
+   "in_list_view": 1,
+   "description": "Off = pick one (Size). On = pick any number (Add-ons).",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "options",
+   "fieldtype": "Table",
+   "label": "Options",
+   "options": "Modifier Option",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-10-03 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Modifier Group",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "title_field": "group_name",
+ "search_fields": "group_name"
+}

@@ -1,0 +1,92 @@
+/* restaurant_pos - website / login styling (hooks.py web_include_css).
+ *
+ * Ticket P4-26: the Desk login page (and the other web pages Frappe serves, such as the 2FA prompt) is
+ * Aurora-styled. The separate `aurora_ui` theme app supplies the Aurora tokens (--aurora-*) and restyles Desk,
+ * but on Frappe v16 it leaves the login card's primary button and logo block untouched. This file closes that
+ * gap using ONLY aurora_ui's own tokens - no palette of its own - so a re-themed Aurora flows through. The
+ * fallbacks match the Aurora style guide in case aurora_ui is not installed. aurora_ui itself is never edited.
+ *
+ * Specificity is deliberately higher than Frappe's `.for-login .page-card .btn-login` rules (and is verified
+ * by the visual check in docs/runbooks/desk-visual-check.md after every Frappe/ERPNext upgrade). */
+
+body[data-path="login"],
+body[data-path="update-password"],
+body[data-path="me"] {
+	background: var(--aurora-gradient-surface, linear-gradient(160deg, #eef5ff 0%, rgba(255, 255, 255, 0) 60%)), var(--bg-color, #f6f8fd);
+}
+
+html body .for-login .page-card,
+html body .for-email-login .page-card,
+html body .for-forgot .page-card,
+html body .for-signup .page-card,
+html body .for-login-with-email-link .page-card {
+	border: 1px solid var(--aurora-subtle-strong, #e3e9f4);
+	border-radius: 16px;
+	box-shadow: var(--aurora-lift, 0 2px 4px rgba(21, 32, 54, 0.04), 0 12px 28px rgba(21, 32, 54, 0.12));
+	background: var(--card-bg, #fff);
+}
+
+/* the title under the logo */
+html body .for-login .page-card-head .login-title,
+html body .for-login .page-card-head h4 {
+	color: var(--aurora-brand-deep, #12306e);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+/* the logo block: a brand tile instead of the stock mark */
+html body .for-login .page-card-head .app-logo {
+	box-sizing: border-box;
+	width: 56px;
+	height: 56px;
+	min-height: 56px;
+	max-height: none;
+	padding: 10px;
+	border-radius: 14px;
+	background: var(--aurora-gradient-brand, linear-gradient(135deg, #1b5fe0 0%, #143c8e 55%, #0d7fae 100%));
+	object-fit: contain;
+}
+
+/* primary buttons on the login family of pages */
+html body .for-login .page-card .btn-primary,
+html body .for-login .page-card .btn-login,
+html body .for-login .page-card .page-card-actions .btn-login,
+html body .for-email-login .page-card .btn-primary,
+html body .for-forgot .page-card .btn-primary,
+html body .for-login-with-email-link .page-card .btn-primary {
+	background: var(--aurora-brand, #2f76f7);
+	border-color: var(--aurora-brand, #2f76f7);
+	color: #fff;
+	border-radius: 10px;
+	font-weight: 600;
+	transition: background var(--aurora-duration-fast, 0.12s) var(--aurora-ease, ease);
+}
+
+html body .for-login .page-card .btn-primary:hover,
+html body .for-login .page-card .btn-login:hover,
+html body .for-login .page-card .page-card-actions .btn-login:hover,
+html body .for-email-login .page-card .btn-primary:hover,
+html body .for-forgot .page-card .btn-primary:hover,
+html body .for-login-with-email-link .page-card .btn-primary:hover {
+	background: var(--aurora-brand-strong, #164ab4);
+	border-color: var(--aurora-brand-strong, #164ab4);
+}
+
+html body .for-login .page-card .btn-primary:focus-visible,
+html body .for-login .page-card .btn-login:focus-visible {
+	outline: 2px solid var(--aurora-accent, #21b4e8);
+	outline-offset: 2px;
+}
+
+/* inputs: Aurora's focus ring instead of the stock black outline */
+html body .for-login .page-card .form-control:focus,
+html body .for-email-login .page-card .form-control:focus,
+html body .for-forgot .page-card .form-control:focus {
+	border-color: var(--aurora-brand, #2f76f7);
+	box-shadow: 0 0 0 3px var(--aurora-active, #dce9ff);
+}
+
+html body .for-login .page-card a,
+html body .for-forgot .page-card a {
+	color: var(--aurora-brand-strong, #164ab4);
+}

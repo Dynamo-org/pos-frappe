@@ -1,0 +1,184 @@
+{
+ "api_version": 1,
+ "methods": {
+  "pairing.consume_pairing_code": {
+   "params": [
+    "code"
+   ],
+   "required": [
+    "code"
+   ]
+  },
+  "sync.get_item_image": {
+   "params": [
+    "outlet",
+    "item_code",
+    "width"
+   ],
+   "required": [
+    "outlet",
+    "item_code"
+   ]
+  },
+  "sync.get_master_version": {
+   "params": [
+    "outlet"
+   ],
+   "required": [
+    "outlet"
+   ]
+  },
+  "sync.pull_changes": {
+   "params": [
+    "outlet",
+    "cursor",
+    "ack_events"
+   ],
+   "required": [
+    "outlet"
+   ]
+  },
+  "sync.push_availability_log": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_batch": {
+   "params": [
+    "kind",
+    "records"
+   ],
+   "required": [
+    "kind",
+    "records"
+   ]
+  },
+  "sync.push_guest_consent": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_kot_timing": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_pin_reset": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_pos_invoice": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_refund": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_shift_close": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_shift_open": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  },
+  "sync.push_void_log": {
+   "params": [
+    "payload"
+   ],
+   "required": [
+    "payload"
+   ]
+  }
+ },
+ "pull_changes": {
+  "row_keys": {
+   "floors": [
+    "id",
+    "name"
+   ],
+   "menu_items": [
+    "category",
+    "dietary_type",
+    "gst_rate_pct",
+    "hsn_code",
+    "image_version",
+    "item_code",
+    "item_tax_template",
+    "modifier_groups",
+    "name",
+    "price_paise",
+    "removed",
+    "station"
+   ],
+   "staff": [
+    "active",
+    "id",
+    "name",
+    "pin_hash",
+    "pin_reset_requested_at",
+    "role",
+    "staff_number"
+   ],
+   "stations": [
+    "id",
+    "name",
+    "printer_id",
+    "sla_seconds"
+   ],
+   "tables": [
+    "floor",
+    "id",
+    "label",
+    "seat_count"
+   ]
+  },
+  "top_level_keys": [
+   "billing_settings",
+   "cursor",
+   "events",
+   "floor_permissions",
+   "floors",
+   "master_version",
+   "menu_items",
+   "modifier_groups",
+   "printers",
+   "push_secrets",
+   "revoked_devices",
+   "staff",
+   "stations",
+   "tables",
+   "truncated"
+  ]
+ }
+}

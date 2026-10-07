@@ -1,0 +1,156 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-26 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "restaurant_order",
+  "line_item_id",
+  "item_code",
+  "item_name",
+  "station",
+  "qty",
+  "course",
+  "fired_at",
+  "started_at",
+  "ready_at",
+  "served_at",
+  "correction_of",
+  "correction_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Outlet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "restaurant_order",
+   "fieldtype": "Data",
+   "label": "Restaurant Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "The Hub's own order UUID, not a Frappe Link — orders are created and live only on the Hub (CLAUDE.md rule 4) and are never individually mirrored into Frappe; only the final bill syncs up, as a Sales Invoice (ticket P3-07). Same pattern as Void Log's own restaurant_order field."
+  },
+  {
+   "fieldname": "line_item_id",
+   "fieldtype": "Data",
+   "label": "Line Item Id",
+   "reqd": 1,
+   "description": "The Hub's own order-line id — one KOT record per kitchen ticket item, not per order."
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "label": "Item Code",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "description": "Denormalized at fire time (the Hub's own OrderLineRecord.name convention) so a later item rename can't change an already-cooked ticket's own record."
+  },
+  {
+   "fieldname": "station",
+   "fieldtype": "Link",
+   "label": "Station",
+   "options": "Station",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty",
+   "default": "1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "course",
+   "fieldtype": "Select",
+   "label": "Course",
+   "options": "Starter\nMain\nDessert\nOther"
+  },
+  {
+   "fieldname": "fired_at",
+   "fieldtype": "Datetime",
+   "label": "Fired At",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "started_at",
+   "fieldtype": "Datetime",
+   "label": "Started At"
+  },
+  {
+   "fieldname": "ready_at",
+   "fieldtype": "Datetime",
+   "label": "Ready At"
+  },
+  {
+   "fieldname": "served_at",
+   "fieldtype": "Datetime",
+   "label": "Served At",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Only pushed once a ticket item reaches Served — a real, complete kitchen-timing fact (ticket P3-10's reworked scope: PRD's own 'KOT timestamps sync to ERPNext for reporting' requirement, delivered as an append-only audit record rather than a live Restaurant Order/KOT mirror, which CLAUDE.md rule 4 forbids). A voided fired line never reaches Served, so it never gets a row here — that line's own audit trail is Void Log's job, not this one."
+  },
+  {
+   "fieldname": "correction_of",
+   "fieldtype": "Link",
+   "label": "Correction Of",
+   "options": "KOT",
+   "read_only": 1,
+   "description": "Ticket P3-29: this record never edits or deletes the original - it is a NEW entry that points back at it."
+  },
+  {
+   "fieldname": "correction_reason",
+   "fieldtype": "Small Text",
+   "label": "Correction Reason",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-09-27 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "KOT",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 0,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "search_fields": "restaurant_order,item_code,outlet"
+}

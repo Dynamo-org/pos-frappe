@@ -1,0 +1,371 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-26 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet_name",
+  "short_code",
+  "city",
+  "outlet_type",
+  "hub_mode",
+  "hub_url",
+  "hub_push_secret",
+  "hub_push_secret_previous",
+  "hub_push_secret_rotated_at",
+  "sb_erp_mapping",
+  "company",
+  "branch",
+  "gstin_address",
+  "gstin",
+  "pos_profile",
+  "price_list",
+  "warehouse",
+  "invoice_series_prefix",
+  "cb_business_hours",
+  "sb_business_hours",
+  "business_hours_opens",
+  "business_hours_closes",
+  "business_hours_day_ends",
+  "cb_other",
+  "seating_capacity",
+  "gst_rate_pct",
+  "gst_inclusive",
+  "service_charge_pct",
+  "service_charge_gst_applicable",
+  "timezone",
+  "receipt_language",
+  "fssai_license_number",
+  "receipt_printer",
+  "sb_upi_offline",
+  "upi_vpa",
+  "upi_payee_name",
+  "guest_order_approval"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet_name",
+   "fieldtype": "Data",
+   "label": "Outlet Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "short_code",
+   "fieldtype": "Data",
+   "label": "Short Code",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1,
+   "description": "1-10 characters, unique per tenant."
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "outlet_type",
+   "fieldtype": "Select",
+   "label": "Outlet Type",
+   "options": "Restaurant\nRetail",
+   "default": "Restaurant",
+   "reqd": 1,
+   "permlevel": 1,
+   "description": "Set by the operator to match what was actually sold — not client self-service.",
+   "in_list_view": 0,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "hub_mode",
+   "fieldtype": "Select",
+   "label": "Hub Mode",
+   "options": "Cloud\nEdge",
+   "default": "Cloud",
+   "reqd": 1,
+   "permlevel": 1,
+   "description": "Standard tier = Cloud Hub. Premium tier = Edge Hub (Tech Architecture §2). Set by the operator to match the subscription actually sold — not client self-service; changing it means re-pairing every device at this outlet.",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "hub_url",
+   "fieldtype": "Data",
+   "label": "Hub URL",
+   "description": "Learned by devices only at pairing time — never baked into a build.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "hub_push_secret",
+   "fieldtype": "Password",
+   "label": "Hub Push Secret",
+   "description": "Signs what ERPNext pushes to this outlet's Hub (ticket P3-27). Created on first use, rotated from the Rotate push secret button; handed to the Hub only through its authenticated pull.",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "hub_push_secret_previous",
+   "fieldtype": "Password",
+   "label": "Previous Hub Push Secret",
+   "description": "Still accepted by the Hub for one hour after a rotation.",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "hub_push_secret_rotated_at",
+   "fieldtype": "Datetime",
+   "label": "Hub Push Secret Rotated At",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sb_erp_mapping",
+   "fieldtype": "Section Break",
+   "label": "ERP Mapping",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "branch",
+   "fieldtype": "Link",
+   "label": "Branch",
+   "options": "Branch",
+   "description": "Tags every synced Sales Invoice (and its GL Entries) with this outlet as an Accounting Dimension — without it, multi-outlet sales/GL can't be told apart in standard ERPNext reports (P&L, General Ledger, etc.). One Branch per Outlet, same short code by convention.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "gstin_address",
+   "fieldtype": "Link",
+   "label": "GSTIN Address",
+   "options": "Address",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "gstin",
+   "fieldtype": "Data",
+   "label": "GSTIN",
+   "description": "15 characters; must match the state of GSTIN Address. Validated on save (P1-22).",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "pos_profile",
+   "fieldtype": "Link",
+   "label": "POS Profile",
+   "options": "POS Profile",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "price_list",
+   "fieldtype": "Link",
+   "label": "Price List",
+   "options": "Price List",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "invoice_series_prefix",
+   "fieldtype": "Data",
+   "label": "Invoice Series Prefix",
+   "description": "e.g. KOR/26-27/ — format itself is pending client confirmation (P0-22).",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "cb_business_hours",
+   "fieldtype": "Column Break",
+   "label": "Cb Business Hours",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "sb_business_hours",
+   "fieldtype": "Section Break",
+   "label": "Business Hours",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "business_hours_opens",
+   "fieldtype": "Time",
+   "label": "Business Hours Opens",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "business_hours_closes",
+   "fieldtype": "Time",
+   "label": "Business Hours Closes",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "business_hours_day_ends",
+   "fieldtype": "Time",
+   "label": "Business Hours Day Ends",
+   "description": "A bill settled after midnight posts to the previous business date.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "cb_other",
+   "fieldtype": "Column Break",
+   "label": "Cb Other",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "seating_capacity",
+   "fieldtype": "Int",
+   "label": "Seating Capacity",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "gst_rate_pct",
+   "fieldtype": "Percent",
+   "label": "GST Rate Pct",
+   "default": "5",
+   "description": "A single flat rate for the seed menu. Inclusive/exclusive and the rate itself are pending client confirmation (P0-21) — this is a working default, synced to the Hub's bill maths.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "gst_inclusive",
+   "fieldtype": "Check",
+   "label": "GST Inclusive",
+   "description": "Whether menu prices already include GST. Pending client confirmation (P0-21).",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "service_charge_pct",
+   "fieldtype": "Percent",
+   "label": "Service Charge Pct",
+   "description": "Whether GST applies on it is pending client confirmation (P0-21).",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "service_charge_gst_applicable",
+   "fieldtype": "Check",
+   "label": "GST Applies On Service Charge",
+   "description": "Pending client confirmation (P0-21).",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "timezone",
+   "fieldtype": "Data",
+   "label": "Timezone",
+   "default": "Asia/Kolkata",
+   "read_only": 1,
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "receipt_language",
+   "fieldtype": "Data",
+   "label": "Receipt Language",
+   "default": "en",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "fssai_license_number",
+   "fieldtype": "Data",
+   "label": "FSSAI License Number",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "sb_upi_offline",
+   "fieldtype": "Section Break",
+   "label": "UPI — Premium Offline Fallback",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "upi_vpa",
+   "fieldtype": "Data",
+   "label": "UPI VPA (Payee Address)",
+   "description": "e.g. outlet@okaxis — shown as a static QR on an Edge Hub when the internet is down and the cashier confirms a UPI payment manually (Tech Architecture §10, ticket P4-14). Not used on Cloud Hubs.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "upi_payee_name",
+   "fieldtype": "Data",
+   "label": "UPI Payee Name",
+   "description": "Shown to the guest's UPI app when scanning the static QR. Defaults to the outlet name if left blank.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "receipt_printer",
+   "fieldtype": "Link",
+   "label": "Receipt Printer",
+   "options": "Printer",
+   "description": "Ticket P2-18: where bills/receipts print and the cash drawer is kicked from (its drawer port). Kitchen tickets go to each Station's own printer instead.",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "guest_order_approval",
+   "fieldtype": "Check",
+   "label": "Guest Orders Need Waiter Approval",
+   "default": "0",
+   "description": "Ticket P2-31: when on, a table's FIRST guest-app order waits for a waiter to approve it before it reaches the bill; later orders from that seating go straight through. Off by default - a working default, the client's call (Security & Access section 4 calls it optional).",
+   "in_list_view": 0
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-10-04 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Outlet",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "Owner/Manager",
+   "permlevel": 0,
+   "read": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "permlevel": 1,
+   "read": 1,
+   "role": "Owner/Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "field:short_code",
+ "title_field": "outlet_name",
+ "search_fields": "outlet_name,short_code,city"
+}

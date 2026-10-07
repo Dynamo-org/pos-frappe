@@ -1,0 +1,146 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-28 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "restaurant_order",
+  "sales_invoice",
+  "credit_note",
+  "amount",
+  "reason",
+  "requested_by",
+  "approved_by",
+  "device",
+  "occurred_at",
+  "correction_of",
+  "correction_reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Outlet",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "restaurant_order",
+   "fieldtype": "Data",
+   "label": "Restaurant Order",
+   "reqd": 1,
+   "description": "The Hub's own order UUID, not a Frappe Link — orders are created and live only on the Hub (CLAUDE.md rule 4) and are never individually mirrored into Frappe, same convention as Void Log/KOT's own restaurant_order field."
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Original Sales Invoice",
+   "options": "Sales Invoice",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Ticket P4-16: the already-submitted, already-paid invoice this refund reverses part or all of. A refund can only be pushed once this invoice has itself finished syncing (has a real name) — the sync-worker's own push-refunds.ts retries until then."
+  },
+  {
+   "fieldname": "credit_note",
+   "fieldtype": "Link",
+   "label": "Credit Note",
+   "options": "Sales Invoice",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "The real, submitted return Sales Invoice (is_return=1, return_against=Original Sales Invoice) this refund created — Tech Architecture §8's 'a void creates a linked reversing entry; numbers are never reused or deleted.'"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Int",
+   "label": "Amount",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "Paise. Never more than the amount paid on that bill minus any earlier refunds against it (Validation & Conventions §3) — enforced Hub-side before this is ever pushed."
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "Staff PIN",
+   "reqd": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "Staff PIN",
+   "reqd": 1,
+   "description": "A different supervisor/owner-manager who approved it with their own PIN — never the same session as requested_by (ticket P4-16 reuses P2-04's own Void Log maker-checker convention, since no separate policy is stated for a post-payment refund)."
+  },
+  {
+   "fieldname": "device",
+   "fieldtype": "Link",
+   "label": "Device",
+   "options": "Device"
+  },
+  {
+   "fieldname": "occurred_at",
+   "fieldtype": "Datetime",
+   "label": "Occurred At",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "correction_of",
+   "fieldtype": "Link",
+   "label": "Correction Of",
+   "options": "Refund Log",
+   "read_only": 1,
+   "description": "Ticket P3-29: this record never edits or deletes the original - it is a NEW entry that points back at it."
+  },
+  {
+   "fieldname": "correction_reason",
+   "fieldtype": "Small Text",
+   "label": "Correction Reason",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-09-28 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Refund Log",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 0,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "search_fields": "restaurant_order,sales_invoice,credit_note"
+}

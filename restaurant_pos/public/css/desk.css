@@ -1,0 +1,54 @@
+/* restaurant_pos - Desk styling (hooks.py app_include_css).
+ *
+ * Ticket P4-26: Desk adopts the Aurora look through the separate `aurora_ui` theme app (tokens, controls,
+ * dashboards, login). This file only styles what THIS app adds, using Frappe's own colour variables - which
+ * Aurora re-maps - so it follows whichever theme is active and never hard-codes a palette of its own. */
+
+#bo-return-bar {
+	position: fixed;
+	top: calc(var(--navbar-height, 48px) + 8px);
+	right: 16px;
+	z-index: 1030;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 4px 4px 12px;
+	background: var(--card-bg, #fff);
+	border: 1px solid var(--border-color, #d0d9e9);
+	border-radius: var(--border-radius-md, 10px);
+	box-shadow: var(--shadow-md, 0 8px 24px rgba(21, 32, 54, 0.12));
+	font-size: var(--text-md, 13px);
+}
+
+#bo-return-bar .bo-return-link {
+	font-weight: 600;
+	color: var(--primary, #2f76f7);
+	text-decoration: none;
+}
+
+#bo-return-bar .bo-return-link:hover,
+#bo-return-bar .bo-return-link:focus-visible {
+	text-decoration: underline;
+}
+
+#bo-return-bar .bo-return-dismiss {
+	border: 0;
+	background: transparent;
+	color: var(--text-muted, #5f6d88);
+	font-size: 18px;
+	line-height: 1;
+	padding: 2px 8px;
+	border-radius: var(--border-radius-sm, 6px);
+	cursor: pointer;
+}
+
+#bo-return-bar .bo-return-dismiss:hover {
+	background: var(--control-bg, #eef2f9);
+}
+
+/* Print: never part of a printed record */
+@media print {
+	#bo-return-bar {
+		display: none;
+	}
+}

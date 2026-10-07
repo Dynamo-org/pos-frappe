@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-04 15:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "staff_role",
+  "action",
+  "allowed"
+ ],
+ "fields": [
+  {
+   "fieldname": "staff_role",
+   "fieldtype": "Select",
+   "label": "Staff Role",
+   "options": "Waiter\nKitchen\nCashier\nSupervisor\nOwner/Manager",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Select",
+   "label": "Floor Action",
+   "options": "approve_void\napprove_refund\nopen_close_shift\nunlock_staff_pin\napprove_guest_orders\nview_sync_issues",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "allowed",
+   "fieldtype": "Check",
+   "label": "Allowed",
+   "in_list_view": 1,
+   "description": "Ticket P4-35: what a staff role may do ON THE FLOOR (the Hub's own small set of checks). Edited through the Back Office Access rights screen; the Hub reads these rows on its next pull. A role/action with no row keeps the built-in default.",
+   "in_standard_filter": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-10-04 15:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Floor Permission",
+ "naming_rule": "Expression",
+ "autoname": "format:{staff_role}-{action}",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "search_fields": "staff_role,action"
+}

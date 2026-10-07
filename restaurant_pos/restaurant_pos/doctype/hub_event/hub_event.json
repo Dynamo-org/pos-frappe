@@ -1,0 +1,108 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "hash",
+ "creation": "2026-10-04 20:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "outlet",
+  "event_type",
+  "status",
+  "event_uuid",
+  "attempts",
+  "delivered_at",
+  "delivered_via",
+  "data_json"
+ ],
+ "fields": [
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "label": "Outlet",
+   "options": "Outlet",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "event_type",
+   "fieldtype": "Data",
+   "label": "Event Type",
+   "reqd": 1,
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "e.g. payment_confirmed, message_status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Pending\nDelivered",
+   "default": "Pending",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "event_uuid",
+   "fieldtype": "Data",
+   "label": "Event Id",
+   "reqd": 1,
+   "unique": 1,
+   "read_only": 1,
+   "description": "The Hub applies an event with this id once, however many times it arrives (by push, by pull, or both)."
+  },
+  {
+   "fieldname": "attempts",
+   "fieldtype": "Int",
+   "label": "Push Attempts",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "delivered_at",
+   "fieldtype": "Datetime",
+   "label": "Delivered At",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "delivered_via",
+   "fieldtype": "Select",
+   "label": "Delivered Via",
+   "options": "\npush\npull",
+   "read_only": 1
+  },
+  {
+   "fieldname": "data_json",
+   "fieldtype": "Code",
+   "label": "Data",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-10-04 20:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Hub Event",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "event_type",
+ "search_fields": "outlet,event_type,status"
+}

@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-09-26 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "full_name",
+  "staff_number",
+  "pin_hash",
+  "pin_reset_requested_at",
+  "active",
+  "assignments"
+ ],
+ "fields": [
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "staff_number",
+   "fieldtype": "Data",
+   "label": "Staff Number",
+   "unique": 1,
+   "description": "Optional alternate login: 2-6 digits, unique per tenant.",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pin_hash",
+   "fieldtype": "Password",
+   "label": "PIN (set on a device - never shown)",
+   "description": "Write-only by design. A PIN is chosen by its owner on a staff-app device and hashed by the Hub; Desk can neither show nor set it. Use 'Request PIN reset' to let the person choose a new one.",
+   "in_list_view": 0,
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1,
+   "report_hide": 1
+  },
+  {
+   "fieldname": "pin_reset_requested_at",
+   "fieldtype": "Datetime",
+   "label": "Pin Reset Requested At",
+   "read_only": 1,
+   "description": "Ticket P4-34: set by request_pin_reset() (Back Office \"Reset PIN\"), cleared by push_pin_reset() once the person has set a new PIN themselves on a staff-app device — the Hub hashes it locally (it holds the pepper, Frappe never does), so this flag is the only thing that ever crosses the boundary in either direction, never a PIN or a hash-in-progress.",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "default": "1",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "assignments",
+   "fieldtype": "Table",
+   "label": "Assignments",
+   "options": "Staff Outlet Assignment",
+   "description": "One person, one PIN per tenant, with a role at each outlet they work in.",
+   "in_list_view": 0
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-09-26 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Staff PIN",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "hash",
+ "title_field": "full_name",
+ "search_fields": "full_name,staff_number"
+}

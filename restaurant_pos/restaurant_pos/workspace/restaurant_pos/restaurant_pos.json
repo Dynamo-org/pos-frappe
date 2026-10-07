@@ -1,0 +1,359 @@
+{
+ "app": "restaurant_pos",
+ "charts": [],
+ "content": "[{\"id\": \"hdr_bo\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Back Office</b></span>\", \"col\": 12}}, {\"id\": \"sc_0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Menu & pricing\", \"col\": 4}}, {\"id\": \"sc_1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tables & floors\", \"col\": 4}}, {\"id\": \"sc_2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Staff\", \"col\": 4}}, {\"id\": \"sc_3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Devices\", \"col\": 4}}, {\"id\": \"sc_4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Access rights\", \"col\": 4}}, {\"id\": \"sc_5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Outlet setup\", \"col\": 4}}, {\"id\": \"hdr_desk\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Full records in Desk</b></span>\", \"col\": 12}}, {\"id\": \"card_0\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}, {\"id\": \"card_1\", \"type\": \"card\", \"data\": {\"card_name\": \"Devices and people\", \"col\": 4}}, {\"id\": \"card_2\", \"type\": \"card\", \"data\": {\"card_name\": \"Audit trail (read-only)\", \"col\": 4}}, {\"id\": \"card_3\", \"type\": \"card\", \"data\": {\"card_name\": \"Sync\", \"col\": 4}}, {\"id\": \"card_4\", \"type\": \"card\", \"data\": {\"card_name\": \"POS accounting\", \"col\": 4}}]",
+ "creation": "2026-10-04 16:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "utensils",
+ "idx": 0,
+ "indicator_color": "",
+ "is_hidden": 0,
+ "label": "Restaurant POS",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Setup",
+   "link_count": 6,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Outlet",
+   "link_count": 0,
+   "link_to": "Outlet",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Floor",
+   "link_count": 0,
+   "link_to": "Floor",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Restaurant Table",
+   "link_count": 0,
+   "link_to": "Restaurant Table",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Station",
+   "link_count": 0,
+   "link_to": "Station",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Printer",
+   "link_count": 0,
+   "link_to": "Printer",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Modifier Group",
+   "link_count": 0,
+   "link_to": "Modifier Group",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Devices and people",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Device",
+   "link_count": 0,
+   "link_to": "Device",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pairing Code",
+   "link_count": 0,
+   "link_to": "Pairing Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Staff PIN",
+   "link_count": 0,
+   "link_to": "Staff PIN",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Floor Permission",
+   "link_count": 0,
+   "link_to": "Floor Permission",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Audit trail (read-only)",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Void Log",
+   "link_count": 0,
+   "link_to": "Void Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Refund Log",
+   "link_count": 0,
+   "link_to": "Refund Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Availability Log",
+   "link_count": 0,
+   "link_to": "Availability Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "KOT",
+   "link_count": 0,
+   "link_to": "KOT",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Guest Consent",
+   "link_count": 0,
+   "link_to": "Guest Consent",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sync",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sync Dead Letter",
+   "link_count": 0,
+   "link_to": "Sync Dead Letter",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "POS accounting",
+   "link_count": 6,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sales Invoice",
+   "link_count": 0,
+   "link_to": "Sales Invoice",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "POS Opening Entry",
+   "link_count": 0,
+   "link_to": "POS Opening Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "POS Closing Entry",
+   "link_count": 0,
+   "link_to": "POS Closing Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Stock Entry",
+   "link_count": 0,
+   "link_to": "Stock Entry",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Sales Register",
+   "link_count": 0,
+   "link_to": "Sales Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Item-wise Sales Register",
+   "link_count": 0,
+   "link_to": "Item-wise Sales Register",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-10-04 18:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Restaurant POS",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Owner/Manager"
+  }
+ ],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "label": "Menu & pricing",
+   "type": "URL",
+   "url": "/back-office/menu",
+   "color": "Blue"
+  },
+  {
+   "label": "Tables & floors",
+   "type": "URL",
+   "url": "/back-office/floors",
+   "color": "Blue"
+  },
+  {
+   "label": "Staff",
+   "type": "URL",
+   "url": "/back-office/staff",
+   "color": "Blue"
+  },
+  {
+   "label": "Devices",
+   "type": "URL",
+   "url": "/back-office/devices",
+   "color": "Blue"
+  },
+  {
+   "label": "Access rights",
+   "type": "URL",
+   "url": "/back-office/access-rights",
+   "color": "Blue"
+  },
+  {
+   "label": "Outlet setup",
+   "type": "URL",
+   "url": "/back-office/outlets",
+   "color": "Blue"
+  }
+ ],
+ "title": "Restaurant POS",
+ "type": "Workspace"
+}

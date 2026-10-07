@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-10-03 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "option_name",
+  "price_delta",
+  "disabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "option_name",
+   "fieldtype": "Data",
+   "label": "Option",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "price_delta",
+   "fieldtype": "Currency",
+   "label": "Price Change",
+   "default": "0",
+   "in_list_view": 1,
+   "description": "Added to the item's price when this option is chosen (use a negative number for a discount, e.g. 'No cheese'). Taxed at the parent item's own GST rate."
+  },
+  {
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled",
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2026-10-03 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Restaurant POS",
+ "name": "Modifier Option",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "ASC",
+ "states": [],
+ "track_changes": 0
+}
